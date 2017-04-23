@@ -1,0 +1,2 @@
+# ScrabbleCombinations
+Assignment for algorithms
