@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class GeneralMethods{
-
+	private static String[] wordList;
 	/**
 	 * 
 	 * @param list	A list of words (should be sorted alphabetically)
@@ -118,34 +118,37 @@ public class GeneralMethods{
 	
 	/*
 	Source used:
-	http://stackoverflow.com/questions/3844307/how-to-read-file-from-relative-path-in-java-project-java-io-file-cannot-find-th
-	http://stackoverflow.com/questions/8275499/how-to-call-getclass-from-a-static-method-in-java
+	http://stackoverflow.com/questions/14209085/how-to-define-a-relative-path-in-java
 	*/
 	
 	public static String[] generateWordList(){
-		String[] wordList=new String[0]; 
+		ArrayList<String> wordList=new ArrayList<String>();
 			try {
-				int length=0;
-				GeneralMethods g=new GeneralMethods();
-				URL url = g.getClass().getResource("words.txt");
-				File file = new File(url.getPath());
-				//TODO relative
+				String filePath = new File("").getAbsolutePath();
+				//System.out.println(filePath);
+				filePath+="\\words.txt";
+				File file = new File(filePath);
 				Scanner sc = new Scanner(file);
 				while(sc.hasNext()){
-					length++;
-					sc.nextLine();
+					wordList.add(sc.nextLine());
 				}
-				
-				wordList=new String[length];
-				Scanner sc2 = new Scanner(file);
-				for(int i=0;i<length;i++){
-					wordList[i]=sc.nextLine();
-				}
+				//wordList.add(sc.next());
+				sc.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
-			return wordList;
+			String[] wordlist2=new String[wordList.size()];
+			for(int i=0;i<wordList.size();i++){
+				wordlist2[i]=wordList.get(i);
+			}
+			return wordlist2;
 	}
-}	
-
+	
+	public static String[] getWordList(){
+		if(wordList==null){
+			wordList=generateWordList();
+		}
+		return wordList;
+	}
+}

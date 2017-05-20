@@ -4,6 +4,7 @@
 package scrabbleCombinations;
 
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +72,4 @@ public class GeneralMethodsTest {
 		String[] wordlist=GeneralMethods.generateWordList();
 		assertTrue(wordlist[98].equals("abacuses"));
 	}
-
 }
