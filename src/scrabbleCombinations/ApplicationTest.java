@@ -26,7 +26,7 @@ public class ApplicationTest {
 	 */
 	@Test
 	public void testMain() {
-		String[] args={"h","e","l","l","o"};
+		String[] args={"a","e","f","g","b","n"};
 		Application.main(args);
 	}
 

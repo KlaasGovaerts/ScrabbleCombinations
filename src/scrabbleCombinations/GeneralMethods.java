@@ -151,4 +151,36 @@ public class GeneralMethods{
 		}
 		return wordList;
 	}
+	
+	public static int getScrabbleValue(String word){
+		int value=0;
+		char[] charArray=word.toCharArray();
+		for(char c:charArray){
+				value+=GeneralMethods.getLetterValue(c);
+			}
+		return value;
+		}
+	
+	private static int getLetterValue(char c){
+		String[] lettersByScore={"","eaionrtlsu","dg","bcmp","fhvwy","k","","","jx","","qz"};
+		for(int i=0;i<lettersByScore.length;i++){
+			if(lettersByScore[i].contains(""+c)){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	public static String findBestWord(String[] foundWords){
+		int highestValue=0;
+		String bestWord="";
+		for (String s:foundWords){
+			int currentValue=GeneralMethods.getScrabbleValue(s);
+			if(currentValue>highestValue){
+				highestValue=currentValue;
+				bestWord=s;
+			}
+		}
+		return bestWord;
+	}
 }
