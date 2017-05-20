@@ -2,10 +2,14 @@ package scrabbleCombinations;
 
 import java.lang.Character;
 
+/**
+ * @author Klaas Govaerts
+ * Anagram generator.
+ */
 public class Application {
 	/**
-	 * Will print possible words to console
 	 * @param args The characters in your inventory, each as a seperate array element.
+	 * Will print the word with highest value, and a list of all valid anagrams.
 	 */
 	public static void main(String[] args){
 		char[] unusedCharacters=new char[args.length];
@@ -18,6 +22,10 @@ public class Application {
 		}
 		System.out.println("");
 		new TreeElement("",unusedCharacters);
+		System.out.print("Highest value: ");
+		String bestWord=GeneralMethods.findBestWord(TreeElement.getFoundWords());
+		System.out.print(bestWord);
+		System.out.println(" ("+GeneralMethods.getScrabbleValue(bestWord)+")");
 		for(String s:TreeElement.getFoundWords()){
 			System.out.println(s);
 		}

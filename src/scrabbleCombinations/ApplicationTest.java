@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author klaas
+ * @author Klaas Govaerts
  *
  */
 public class ApplicationTest {
@@ -26,7 +26,7 @@ public class ApplicationTest {
 	 */
 	@Test
 	public void testMain() {
-		String[] args={"a","e","f","g","b","n"};
+		String[] args={"h","e","l","l","o"};
 		Application.main(args);
 	}
 

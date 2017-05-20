@@ -63,13 +63,34 @@ public class GeneralMethodsTest {
 			assertEquals(array2[i],expectedArray[i]);
 		}
 	}
-
+	
 	/**
-	 * Test method for {@link scrabbleCombinations.GeneralMethods#generateWordList()}.
+	 * Test method for {@link scrabbleCombinations.GeneralMethods#getWordList()}.
 	 */
 	@Test
-	public void testGenerateWordList() {
-		String[] wordlist=GeneralMethods.generateWordList();
+	public void testGetWordList() {
+		String[] wordlist=GeneralMethods.getWordList();
 		assertTrue(wordlist[98].equals("abacuses"));
 	}
+
+	/**
+	 * Test method for {@link scrabbleCombinations.GeneralMethods#getScrabbleValue(java.lang.String)}.
+	 */
+	@Test
+	public void testGetScrabbleValue() {
+		assertEquals(GeneralMethods.getScrabbleValue("hello"),8);
+		assertEquals(GeneralMethods.getScrabbleValue("azertyuiopqsdfghjklmwxcvbn"),87);	
+		//Values were verified using http://www.dvorkin.com/scrabscor.php
+	}
+
+	/**
+	 * Test method for {@link scrabbleCombinations.GeneralMethods#findBestWord(java.lang.String[])}.
+	 */
+	@Test
+	public void testFindBestWord() {
+		//https://www.randomlists.com/random-words
+		String[] words={"copper","explain","truck","neat","unite","branch"};
+		assertTrue(GeneralMethods.findBestWord(words).equals("explain"));
+	}
+
 }
