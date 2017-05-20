@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.awt.List;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 
 public class GeneralMethods{
 
@@ -24,23 +25,25 @@ public class GeneralMethods{
 		boolean isContained=false;
 		
 		while(!ready){
-			int average=(int) Math.ceil(((double) border1+ (double) border2)/2);
+			int average=(int) Math.ceil((border1+border2)/2.0);
 			String currentWord=list[average];
-			int location=AlphabetOrder(word,currentWord);
+			int location=alphabetOrder(word,currentWord);
 			//Read the documentation of AlphabetOrder to see the meaning of those numbers
 			switch(location){
 			case 0:
 				return average;
 				
+			case 3:
+				isContained=true;
 			case 1:
 				border2=average-1;
 			break;
+			
+			case 4:
 			case 2:
 				border1=average+1;
 			break;
-			case 3:
-				isContained=true;
-			break;
+			
 			}
 			
 			if(border1>border2){
@@ -63,7 +66,7 @@ public class GeneralMethods{
 	 * @return 3 if word1 comes first AND is contained within word2;
 	 * @return 4 if word2 comes first AND is contained within word1;
 	 */
-	public static int AlphabetOrder(String word1,String word2){
+	public static int alphabetOrder(String word1,String word2){
 		int minSize;
 		
 		if(word1.equals(word2)){
@@ -101,7 +104,7 @@ public class GeneralMethods{
 	 * @param index
 	 * @return Copy of the array but without the element at the given index
 	 */
-	public static char[] ArrayWithoutElement(char[] array,int index){
+	public static char[] arrayWithoutElement(char[] array,int index){
 		char[] newArray=new char[array.length-1];
 		for(int i=0;i<index;i++){
 			newArray[i]=array[i];
@@ -113,11 +116,19 @@ public class GeneralMethods{
 	}
 	//TODO null exception
 	
+	/*
+	Source used:
+	http://stackoverflow.com/questions/3844307/how-to-read-file-from-relative-path-in-java-project-java-io-file-cannot-find-th
+	http://stackoverflow.com/questions/8275499/how-to-call-getclass-from-a-static-method-in-java
+	*/
+	
 	public static String[] generateWordList(){
 		String[] wordList=new String[0]; 
 			try {
 				int length=0;
-				File file = new File("C:\\Users\\klaas\\workspace\\ScrabbleCombinations\\src\\scrabbleCombinations\\english-words.txt");
+				GeneralMethods g=new GeneralMethods();
+				URL url = g.getClass().getResource("words.txt");
+				File file = new File(url.getPath());
 				//TODO relative
 				Scanner sc = new Scanner(file);
 				while(sc.hasNext()){
