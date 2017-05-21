@@ -29,7 +29,7 @@ public class ApplicationDemo {
 	 */
 	@Test
 	public void codeDemo() {
-		String[] args={"h","e","l","l","o"};
+		String[] args={"he","l","l","o"};
 		Application.main(args);
 	}
 

@@ -177,7 +177,7 @@ public class GeneralMethods{
 	
 	/**
 	 * 
-	 * @param c Any lowercase character.
+	 * @param c Any lower case character.
 	 * @return The value of the character in Scrabble
 	 */
 	private static int getLetterValue(char c){

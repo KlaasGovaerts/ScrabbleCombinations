@@ -8,21 +8,23 @@ import java.lang.Character;
  */
 public class Application {
 	/**
-	 * @param args The characters in your inventory, each as a seperate array element.
+	 * @param args The characters in your inventory (either as a single argument or different arguments)
 	 * Will print the word with highest value, and a list of all valid anagrams.
 	 */
 	public static void main(String[] args){
-		char[] unusedCharacters=new char[args.length];
-		for(int i=0;i<args.length;i++){
-			unusedCharacters[i]=Character.toLowerCase(args[i].charAt(0));
+		String inventoryCharactersAsString="";
+		for(String argument:args){
+			inventoryCharactersAsString+=argument.toLowerCase();
 		}
+		char[] inventoryCharacters=inventoryCharactersAsString.toCharArray();
+		
 		
 		System.out.print("Anagrams for:");
-		for(char c:unusedCharacters){
+		for(char c:inventoryCharacters){
 			System.out.print(c);
 		}
 		System.out.println("");
-		String[] foundWords=TreeElement.generateAnagrams(unusedCharacters);
+		String[] foundWords=TreeElement.generateAnagrams(inventoryCharacters);
 		System.out.print("Highest value: ");
 		String bestWord=GeneralMethods.findBestWord(foundWords);
 		System.out.print(bestWord);
