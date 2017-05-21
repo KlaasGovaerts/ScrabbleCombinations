@@ -16,17 +16,18 @@ public class Application {
 		for(int i=0;i<args.length;i++){
 			unusedCharacters[i]=Character.toLowerCase(args[i].charAt(0));
 		}
+		
 		System.out.print("Anagrams for:");
 		for(char c:unusedCharacters){
 			System.out.print(c);
 		}
 		System.out.println("");
-		new TreeElement("",unusedCharacters);
+		String[] foundWords=TreeElement.generateAnagrams(unusedCharacters);
 		System.out.print("Highest value: ");
-		String bestWord=GeneralMethods.findBestWord(TreeElement.getFoundWords());
+		String bestWord=GeneralMethods.findBestWord(foundWords);
 		System.out.print(bestWord);
 		System.out.println(" ("+GeneralMethods.getScrabbleValue(bestWord)+")");
-		for(String s:TreeElement.getFoundWords()){
+		for(String s:foundWords){
 			System.out.println(s);
 		}
 	}

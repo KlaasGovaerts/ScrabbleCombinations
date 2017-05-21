@@ -27,7 +27,6 @@ public class GeneralMethodsTest {
 	 */
 	@Test
 	public void testBinarySearch() {
-		assertEquals(1/2.0,0.5,0.000001);
 		String[] words={"abaisse","abaissed","abaka","abakas","abalation","abalienate","abalienated","abalienating","abalienation","abalone","abalones","abamp","abampere","abamperes","abamps","aband","abandon","abandonable","abandoned","abandonedly","abandonee","abandoner","abandoners"};
 		assertEquals(GeneralMethods.binarySearch(words,"abakas"),3);
 		assertEquals(GeneralMethods.binarySearch(words,"abalienating"),7);
